@@ -1,10 +1,11 @@
 mod app;
+mod integrations;
 use std::fs::File;
 use std::io::Read;
 
-use app::report_generator::ReportGenerator;
-use app::core_types::CategoryConfig;
-use app::categories::create_ledger_categories;
+use app::reports::ReportGenerator;
+use app::categories::CategoryConfig;
+use integrations::transaction_data::{ TransactionJsonDataLoader };
 
 const CATEGORY_CONFIG_PATH: &str = "./resources/test_config/test_categories_1.json";
 
@@ -16,24 +17,27 @@ fn main() {
     let mut contents = String::new();
     file.read_to_string(&mut contents).unwrap();
 
+    // Parse the JSON into a CategoryConfig
     let category_config: CategoryConfig = serde_json::from_str(&contents).unwrap();
     
     println!("{:?}", category_config);
 
-    // If we need the category config again, this function may need to take a pointer
-    // and borrow the config, rather than taking ownership and dropping it.
-    let ledger_categories = create_ledger_categories(category_config);
+    // Create a report generator loaded with the categories from the config
+    // NOTE: this struct exists for the time when we are initializing once (i.e. on startup) 
+    // and then potentially generating multiple reports
+    let report_generator = ReportGenerator::new(category_config);
 
-    
+    // Load some transaction data
 
-    // let report_generator = ReportGenerator::new(categories);
-    // println!("{:?}", report_generator.generate([]));
+    // Parse transaction data into a flat list of relevant transactions for the ledgers
+    let transaction_data = TransactionJsonDataLoader::new().load();
 
-    // if let Ok(file_lister) = std::fs::read_dir(".") {
-    //     file_lister.for_each(|entry| {
-    //         println!("{:?}", entry.unwrap().path())
-    //     })
-    // }
+    // Generate the report
+    let report = report_generator.generate(Vec::new());
+
+    // Print the report
+    // TODO: Work out how to make this integrate with Lambda properly
+    println!("{:?}", report);
 }
 
 
