@@ -1,0 +1,52 @@
+{
+    "shared": [
+        {
+            "canonical_name": "Groceries",
+            "alex_id": "1234",
+            "alex_code": "GRO",
+            "connie_id": "5678",
+            "connie_code": "GRC"
+        },
+        {
+            "canonical_name": "Utilities",
+            "alex_id": "4321",
+            "alex_code": "UTL",
+            "connie_id": "9876",
+            "connie_code": "UTL"
+        }
+    ],
+    "alex": [
+        {
+            "id": "aaaaa",
+            "name": "Car",
+            "code": "CAR"
+        },
+        {
+            "id": "bbbbb",
+            "name": "Shopping",
+            "code": "SHP"
+        },
+        {
+            "id": "ccccc",
+            "name": "Travel",
+            "code": "TRV"
+        }
+    ],
+    "connie": [
+        {
+            "id": "ddddd",
+            "name": "Train",
+            "code": "TRN"
+        },
+        {
+            "id": "eeeee",
+            "name": "Dining",
+            "code": "DIN"
+        },
+        {
+            "id": "fffff",
+            "name": "Entertainment",
+            "code": "ENT"
+        }
+    ]
+}

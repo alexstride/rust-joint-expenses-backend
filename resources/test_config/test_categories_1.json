@@ -1,0 +1,31 @@
+{
+    "shared": [
+        {
+            "canonical_name": "Groceries",
+            "alex": {
+                "id": "1234",
+                "code": "GRO",
+                "name": "Groceries"
+            },
+            "connie": {
+                "id": "456",
+                "code": "GRO",
+                "name": "Groceries"
+            }
+        }
+    ],
+    "alex": [
+        {
+            "id": "aaaaa",
+            "name": "car",
+            "code": "CAR"
+        }
+    ],
+    "connie": [
+                {
+            "id": "bbbbb",
+            "name": "train",
+            "code": "TRN"
+        }
+    ]
+}
